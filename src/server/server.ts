@@ -310,8 +310,17 @@ if (require.main === module) {
           customfavIcon: "https://sourcify.dev/favicon.ico",
         })
       );
-      server.app.listen(server.port, () =>
-        logger.info(`Server listening on port ${server.port}`)
-      );
+      server.app.listen(server.port, () => {
+          logger.info(`Server listening on port ${server.port}`)
+          if (config.corsAllowedOrigins.length > 0) {
+              logger.info("Allowing the following origins for session API:")
+              for (const exp of config.corsAllowedOrigins)  {
+                  logger.info(`-> "${exp.source}"`)
+              }
+          } else {
+              logger.info("No origin configured for session API")
+          }
+      }
+    );
     });
 }
