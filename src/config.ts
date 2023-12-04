@@ -13,6 +13,17 @@ const setRepositoryPath = () => {
   return "/tmp/repository";
 };
 
+const parseUiDomains = () => {
+  const result: Array<RegExp> = []
+  const domainNames = process.env.UI_DOMAIN_NAME?.split(',') ?? []
+  for (const name of domainNames) {
+      if (name.length > 0) {
+          result.push(new RegExp(`^https?:\/\/(?:.+\\.)?${name}(?::\d+)?`))
+      }
+  }
+  return result
+}
+
 // TODO: Don't use config.ts at all. Since as a module config is evaluated only once, this can cause changed environment variables not to take effect. E.g. if you run a Monitor and a Server with different REPOSITORY_PATHs, the server will have monitor's repo path since this was already evaluated and won't be run again. Instead these should be put in place in constructors etc.
 export default {
   monitor: {
@@ -39,9 +50,7 @@ export default {
     secure:
       process.env.NODE_ENV === "production" && process.env.TESTING !== "true", // Set Secure in the Set-Cookie header i.e. require https
   },
-  corsAllowedOrigins: [
-    new RegExp(`^https?:\/\/(?:.+\\.)?${process.env.UI_DOMAIN_NAME}(?::\d+)?`),                     // domain defined by UI_DOMAIN_NAME and subdomains
-  ],
+  corsAllowedOrigins: parseUiDomains(),
   features: {
     create2: process.env.SERVER_CREATE2_VERIFICATION || "false"
   }
