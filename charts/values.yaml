@@ -159,7 +159,6 @@ reset:
     enabled: false  
   ## Set default immage repository, tag, and pull policy
   image:
-    repository: "apline/curl"
-    tag: "8.4.0"
+    repository: "ghcr.io/hashgraph/hedera-sourcify"
     pullPolicy: "IfNotPresent"
 

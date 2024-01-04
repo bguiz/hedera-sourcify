@@ -18,15 +18,15 @@ esac
 
 SCRIPTS_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_PATH=$( dirname "${SCRIPTS_PATH}")
-ENVIRONMENTS_PATH="${REPO_PATH}/environments"
+# ENVIRONMENTS_PATH="${REPO_PATH}/environments"
 
-# Sourcing .env so we get REPOSITORY_PATH set
-source ${ENVIRONMENTS_PATH}/.env
+# # Sourcing .env so we get REPOSITORY_PATH set
+# source ${ENVIRONMENTS_PATH}/.env
 
-case ${REPOSITORY_PATH} in
-  /*) CONTRACT_PATH="${REPOSITORY_PATH}/contracts" ;;
-  *) CONTRACT_PATH="${ENVIRONMENTS_PATH}/${REPOSITORY_PATH}/contracts" ;;
-esac
+# case ${REPOSITORY_PATH} in
+#   /*) CONTRACT_PATH="${REPOSITORY_PATH}/contracts" ;;
+#   *) CONTRACT_PATH="${ENVIRONMENTS_PATH}/${REPOSITORY_PATH}/contracts" ;;
+# esac
 
 if [ ! -d "${CONTRACT_PATH}" ]; then
   echo "Expected contract repository was not found at this path: ${CONTRACT_PATH}"

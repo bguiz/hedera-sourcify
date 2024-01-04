@@ -18,6 +18,9 @@ spec:
           - name: reset
             image: "{{ .Values.reset.image.repository }}:{{ .Values.reset.image.tag }}"
             imagePullPolicy: {{ .Values.reset.image.pullPolicy }}
+            envFrom: 
+              - configMapRef:
+                  name: {{ template "sourcify.name" . }}           
             command:
             - /bin/sh
             - -c
@@ -45,6 +48,9 @@ spec:
           - name: reset
             image: "{{ .Values.reset.image.repository }}:{{ .Values.reset.image.tag }}"
             imagePullPolicy: {{ .Values.reset.image.pullPolicy }}
+            envFrom: 
+              - configMapRef:
+                  name: {{ template "sourcify.name" . }}            
             command:
             - /bin/sh
             - -c
