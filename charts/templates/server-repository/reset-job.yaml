@@ -22,7 +22,7 @@ spec:
               - configMapRef:
                   name: {{ template "sourcify.name" . }}
             env:
-              - name: CONTRACTS_PATH
+              - name: CONTRACT_PATH
                 value: https://repository-sourcify.hedera-devops.com/contracts/              
             command:
             - /bin/sh
