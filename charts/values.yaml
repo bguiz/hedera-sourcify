@@ -160,5 +160,6 @@ reset:
   ## Set default immage repository, tag, and pull policy
   image:
     repository: "ghcr.io/hashgraph/hedera-sourcify"
+    tag: "server-main"
     pullPolicy: "IfNotPresent"
 

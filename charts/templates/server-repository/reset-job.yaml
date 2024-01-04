@@ -24,7 +24,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - wget https://raw.githubusercontent.com/hashgraph/hedera-sourcify/main/scripts/hedera-reset.sh ; chmod +x hedera-reset.sh ; ./hedera-reset.sh previewnet
+            - wget https://raw.githubusercontent.com/hashgraph/hedera-sourcify/reset-correct-image/scripts/hedera-reset.sh ; chmod +x hedera-reset.sh ; ./hedera-reset.sh previewnet
 {{- end }}
 
 ---
@@ -54,5 +54,5 @@ spec:
             command:
             - /bin/sh
             - -c
-            - wget https://raw.githubusercontent.com/hashgraph/hedera-sourcify/main/scripts/hedera-reset.sh ; chmod +x hedera-reset.sh ; ./hedera-reset.sh testnet
+            - wget https://raw.githubusercontent.com/hashgraph/hedera-sourcify/reset-correct-image/scripts/hedera-reset.sh ; chmod +x hedera-reset.sh ; ./hedera-reset.sh testnet
 {{- end }}
